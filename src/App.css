@@ -1,0 +1,18 @@
+* {
+    padding: 0px;
+    margin: 0;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+
+.AppBody {
+    width: 100%;
+    display: grid;
+    grid-template-columns: minmax(20%, 25%) minmax(75%,80%);
+    grid-column-gap: 1px;
+
+
+}
+
+
+

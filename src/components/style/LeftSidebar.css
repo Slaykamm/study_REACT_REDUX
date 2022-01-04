@@ -1,0 +1,21 @@
+.leftSideBar {
+    height: 50em;
+    background-color: rgb(197, 135, 19);
+    border: 4px ridge cornflowerblue;
+}
+
+
+.leftSideBar li {
+    display: flex;
+    justify-content: center;
+}
+
+.leftSideBar form {
+    width: 95%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+
+
+}

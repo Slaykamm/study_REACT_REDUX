@@ -1,0 +1,13 @@
+.MainBody {
+
+    height: 50em;
+    border: 4px ridge cornflowerblue;
+    background-color: khaki;
+
+    
+}
+
+.MainBody h1 {
+    color: darkblue;
+    font-weight: bold;
+}
