@@ -1,18 +1,18 @@
-import React, {useState, useMemo} from 'react';
+import React, {useState} from 'react';
 
-//import data from '../resource/city3.json'
-import data from '../resource/city.list.json'
+import data from '../resource/city3.json'
+//import data from '../resource/city.list.json'
 import countries from '../resource/countries.json'
 
 
 import _ from 'lodash'
 import { connect } from 'react-redux'
 
-import leftSidebar from './style/LeftSidebar.css'
+import  './style/LeftSidebar.css'
 import MyInput from './UI/input/MyInput';
 import MySelect from './UI/select/MySelect';
 import MyButton from './UI/button/MyButton';
-import country from '../redux/reducers/country';
+
 
 
 
@@ -25,14 +25,16 @@ const LeftSidebar = (props) => {
     const [selectedCity, setSelectedCity] = useState('')
     const [weatherPeriod, setWeatherPeriod] = useState('')
     
-    
     const period = [
         {'id': 1, 'code': 1, 'name': 'Часовой прогноз'},
         {'id': 2, 'code': 2, 'name': 'Дневной прогноз'},
         {'id': 3, 'code': 3, 'name': 'Недельный прогноз'}
     ]
 
+
+    
 const sortedCountry = _.sortBy(countries,['name'])
+const filteredObj = _.sortBy(_.filter(data, {"country": selectedCountry}),['name'])
 
 
 
@@ -49,22 +51,23 @@ function clearForm(e){
     console.log("filter", countryID2.id)
 
     setCityName('')
-    console.log('gotovo')
+
 }
 
 
-
-const filteredObj = _.sortBy(_.filter(data, {"country": selectedCountry}),['name'])
-//console.log("Filtered", filteredObj)
 
 function setReduxSelectedCountry(country){
     setSelectedCountry(country)
     props.setReduxCountry(country)
+
 }
 
 function setReduxSelectedCity(city){
     setSelectedCity(city)
-    props.setReduxCity(city)
+    const filtered_city = _.filter(filteredObj, {"name": city})
+
+    props.setReduxCity(city, filtered_city)
+
 }
 
 
@@ -72,8 +75,6 @@ function setReduxPeriod(item){
     setWeatherPeriod(item)
     props.setPeriod(item)
 }
-
-
 
 
 
@@ -135,36 +136,23 @@ function setReduxPeriod(item){
                 defaultValue='Выберите период'
 
                 onChange={item => setReduxPeriod(item)}
-                // onChange={item => setWeatherPeriod(item)}
-            />
+             />
  
                 </li>
-
-                
-
-
-
-
-               
+             
             </ul>
-
-
-           
-
 
         </div>
     );
 };
-
-//export default LeftSidebar;
-
 
 export default connect(
     //mapStateToProps
     state => ({
         period: state.period,
         country: state.country, 
-        city: state.city
+        city: state.city,
+        choosenCity: state.choosenCity
     
     }),
 
@@ -177,8 +165,9 @@ export default connect(
         setReduxCountry: (country) =>{
             dispatch({type: 'SET_COUNTRY', payload: country})
         },
-        setReduxCity: (city) =>{
-            dispatch({type: 'SET_CITY', payload: city})
+        setReduxCity: (city, filtered_city ) =>{
+            dispatch({type: 'SET_CITY', payload: city}),
+            dispatch({type: 'PICK_INFO', payload: filtered_city})
         }
     })
 )(LeftSidebar)

@@ -1,6 +1,8 @@
 .myBtn {
-   font-size: 100px;
-   background-color: brown; 
-   width: 100px;
-   color: chartreuse;
+   font-size: 1rem;
+   background-color: rgb(94, 69, 15); 
+   width: 30%;
+   color: rgb(217, 218, 216);
+   margin-bottom: 10%;
+
 }

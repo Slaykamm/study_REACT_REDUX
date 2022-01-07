@@ -1,4 +1,4 @@
-const initialState = ['City']
+const initialState = []
 
 
 function city(state=initialState, action) {
@@ -7,11 +7,9 @@ function city(state=initialState, action) {
 
     switch (action.type){
         case 'SET_CITY':
-            console.log('works3', action.payload)
+
             return [action.payload] 
 
-            break;
-      
 
 
         default:

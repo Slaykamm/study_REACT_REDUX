@@ -1,6 +1,6 @@
 import _ from 'lodash'
 
-const initialState = ['0']
+const initialState = []
 
 
 function period(state=initialState, action) {
@@ -12,7 +12,7 @@ function period(state=initialState, action) {
             return [action.payload] 
             //...state, 
 
-            break;
+
       
 
         // case 'DELETE_PERIOD':

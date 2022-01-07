@@ -1,0 +1,16 @@
+.titleInfo {
+    color:rgb(19, 4, 46);
+    display: flex;
+    justify-content: center;
+    font-weight: bold;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.innerInfo {
+    color:rgb(19, 4, 46);
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}

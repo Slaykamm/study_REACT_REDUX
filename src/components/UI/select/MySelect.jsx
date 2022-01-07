@@ -6,7 +6,7 @@ const MySelect = ({sortedCountry, defaultValue, value, onChange }) => {
 
         <select 
         
-        className="sel"
+        className={cl.sel}
 
         value={value}
         onChange={event => onChange(event.target.value)}
